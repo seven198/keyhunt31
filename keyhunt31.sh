@@ -29,9 +29,9 @@ logfile        /root/msmtp.log
 account        netease
 host           smtp.163.com
 port           465
-from           13537032388@163.com
-user           13537032388@163.com
-password       VHQjdYyc5d5JGnFa
+from           mianhuatang13377@163.com
+user           mianhuatang13377@163.com
+password       GRynPvxB4JSySexj
 account default : netease
 EOF
 
@@ -76,7 +76,7 @@ chmod +x /root/keyhunt_wrapper.sh
 echo "[6/6] 创建监控脚本..."
 cat << 'EOF' > /root/keyhunt_monitor.sh
 #!/bin/bash
-EMAIL="13537032388@163.com"
+EMAIL="mianhuatang13377@163.com"
 echo "" > /root/keyhunt_hit.txt
 
 tail -Fn0 /root/keyhunt_live.log | while read line; do
@@ -85,7 +85,7 @@ tail -Fn0 /root/keyhunt_live.log | while read line; do
         echo "$line" >> /root/keyhunt_hit.txt
         tail -n 30 /root/keyhunt_live.log >> /root/keyhunt_hit.txt
 
-        mail -s "【KeyHunt 命中提醒】" "$EMAIL" -a "From: 13537032388@163.com" < /root/keyhunt_hit.txt
+        mail -s "【KeyHunt 命中提醒】" "$EMAIL" -a "From: mianhuatang13377@163.com" < /root/keyhunt_hit.txt
 
         pkill keyhunt
         pkill -f keyhunt_wrapper.sh
